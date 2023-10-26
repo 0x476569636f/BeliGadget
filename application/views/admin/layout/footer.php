@@ -35,14 +35,14 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="<?= base_url('adminauth/admin_logout')?>">Logout</a>
+                <a class="btn btn-primary" href="<?= base_url('adminauth/admin_logout') ?>">Logout</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    window.setTimeout( () => {
+    window.setTimeout(() => {
         $(".alert").fadeTo(500, 0).slideUp(500, () => {
             $(this).remove();
         })
@@ -57,6 +57,13 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url() ?>template/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="<?= base_url() ?>template/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?= base_url() ?>template/js/demo/datatables-demo.js"></script>
 
 </body>
 

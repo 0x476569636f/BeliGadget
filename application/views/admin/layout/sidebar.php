@@ -2,11 +2,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+            <i class="fas fa-store"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">BeliGadget<sup>.com</sup></div>
     </a>
 
     <!-- Divider -->
@@ -88,11 +88,11 @@
             <span>SLIDERS</span></a>
     </li>
 
-    <li class="nav-item <?php if($this->uri->segment(1) ==  'users'
+    <li class="nav-item <?php if($this->uri->segment(1) ==  'admins'
     ) {echo 'active'; } ?>">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= base_url('admins')?>">
             <i class="fas fa-users"></i>
-            <span>USERS</span></a>
+            <span>ADMINS</span></a>
     </li>
 
     <!-- Divider -->
