@@ -32,7 +32,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item <?php if (
-                            $this->uri->segment(1) == 'product' || $this->uri->segment(1) == 'category'
+                            $this->uri->segment(1) == 'product' || $this->uri->segment(1) == 'categories'
                         ) {
                             echo 'active';
                         } ?>">
@@ -43,16 +43,16 @@
         <div id="collapseTwo" class="collapse  <?php if ($this->uri->segment(1) == 'product') {
                                                     echo 'show';
                                                 }
-                                                if ($this->uri->segment(1) == 'category') {
+                                                if ($this->uri->segment(1) == 'categories') {
                                                     echo 'show';
                                                 } ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">KATEGORI & PRODUK</h6>
                 <a class="collapse-item <?php if (
-                                            $this->uri->segment(1) == 'category'
+                                            $this->uri->segment(1) == 'categories'
                                         ) {
                                             echo 'active';
-                                        } ?>" href="<?= base_url('category'); ?>">KATEGORI</a>
+                                        } ?>" href="<?= base_url('categories'); ?>">KATEGORI</a>
                 <a class="collapse-item <?php if (
                                             $this->uri->segment(1) == 'product'
                                         ) {
