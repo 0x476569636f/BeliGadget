@@ -20,7 +20,6 @@ class Admins extends CI_Controller
         );
 
         $this->load->view('admin/layout/wrapper', $data, false);
-        
     }
 
     //Add new item
@@ -32,9 +31,14 @@ class Admins extends CI_Controller
             'password' => md5($this->input->post('password')),
         );
 
-        $this->m_admins->add($data);
-        $this->session->set_flashdata('pesan', 'Data Berhasil Di Tambahkan !');
-        redirect('admins');
+        if ($this->m_admins->is_username_exists($data['username'])) {
+            $this->session->set_flashdata('error', 'Username Sudah Ada !');
+            redirect('admins');
+        } else {
+            $this->m_admins->add($data);
+            $this->session->set_flashdata('pesan', 'Data Berhasil Di Tambahkan !');
+            redirect('admins');
+        }
     }
 
     //Update an item
