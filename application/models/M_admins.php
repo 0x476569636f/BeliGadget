@@ -1,7 +1,7 @@
 <?php
 
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_admins extends CI_Model
 {
@@ -12,6 +12,15 @@ class M_admins extends CI_Model
         $this->db->order_by('id_admin', 'desc');
         return $this->db->get()->result();
     }
+    
+    public function is_username_exists($username)
+    {
+        $this->db->where('username', $username);
+        $query = $this->db->get('tbl_admin');
+
+        return $query->num_rows() > 0;
+    }
+
 
     public function add($data)
     {
