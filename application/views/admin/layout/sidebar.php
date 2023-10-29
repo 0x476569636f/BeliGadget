@@ -40,7 +40,7 @@
             <i class="fa fa-shopping-bag"></i>
             <span>PRODUK</span>
         </a>
-        <div id="collapseTwo" class="collapse  <?php if ($this->uri->segment(1) == 'product') {
+        <div id="collapseTwo" class="collapse  <?php if ($this->uri->segment(1) == 'products') {
                                                     echo 'show';
                                                 }
                                                 if ($this->uri->segment(1) == 'categories') {
@@ -54,10 +54,10 @@
                                             echo 'active';
                                         } ?>" href="<?= base_url('categories'); ?>">KATEGORI</a>
                 <a class="collapse-item <?php if (
-                                            $this->uri->segment(1) == 'product'
+                                            $this->uri->segment(1) == 'products'
                                         ) {
                                             echo 'active';
-                                        } ?>" href="<?= base_url('produk'); ?>">PRODUK</a>
+                                        } ?>" href="<?= base_url('products'); ?>">PRODUK</a>
             </div>
         </div>
     </li>

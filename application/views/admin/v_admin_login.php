@@ -57,7 +57,7 @@
                         echo form_open('adminauth/admin_login');
                         ?>
                         <div class="form-group">
-                            <label class="font-weight-bold text-uppercase">Email address</label>
+                            <label class="font-weight-bold text-uppercase">Username</label>
                             <input type="text" name="username" class="form-control" placeholder="Masukkan Username">
                         </div>
                         <div class="form-group">
