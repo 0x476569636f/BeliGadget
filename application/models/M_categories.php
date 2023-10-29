@@ -13,6 +13,13 @@ class M_categories extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function is_category_exist($nama_brand)
+    {
+        $this->db->where('nama_brand', $nama_brand);
+        $query = $this->db->get('tbl_categories');
+        return $query->num_rows() > 0;
+    }
+
     public function add($data){
         $this->db->insert('tbl_categories', $data);
         
