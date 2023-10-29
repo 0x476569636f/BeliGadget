@@ -19,6 +19,13 @@
                 echo $this->session->flashdata('pesan');
                 echo '</div>';
             }
+            if ($this->session->flashdata('error')) {
+                echo '<div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Error! </h5>';
+                echo $this->session->flashdata('error');
+                echo '</div>';
+            }
             ?>
             <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
