@@ -74,9 +74,9 @@
             <span>ORDERS</span></a>
     </li>
 
-    <li class="nav-item <?php if($this->uri->segment(1) ==  'costumers'
+    <li class="nav-item <?php if($this->uri->segment(1) ==  'customers'
     ) {echo 'active'; } ?>">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= base_url('customers')?>">
             <i class="fas fa-users"></i>
             <span>CUSTOMERS</span></a>
     </li>
