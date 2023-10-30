@@ -1,7 +1,7 @@
 <div class="container-fluid mb-5 mt-4">
     <div class="row">
         <div class="col-md-12">
-            <h4 class="font-weight-bold"><i class="fa fa-shopping-bag"></i> PRODUK TERBARU</h4>
+            <h4 class="font-weight-bold"><i class="fa fa-shopping-bag"></i> <?= $title; ?></h4>
             <hr style="border-top: 5px solid rgb(154 155 156);border-radius:.5rem">
         </div>
     </div>

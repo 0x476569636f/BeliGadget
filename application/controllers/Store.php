@@ -28,7 +28,7 @@ class Store extends CI_Controller
     {
         $category = $this->m_store->category($id);
         $data = array(
-            'title' => 'Brand Gadget',
+            'title' => 'Gadget ' . $category->nama_brand,
             'product' => $this->m_store->get_all_product_baseonbrand($id),
             'content' => 'customer/v_brand'
         );
