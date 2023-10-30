@@ -7,7 +7,7 @@
                     <hr>
                     <ul class="list-group">
                         <?php foreach ($category as $key => $value) { ?>
-                        <a href="#" class="list-group-item shadow-sm font-weight-bold text-decoration-none text-dark">
+                        <a href="<?= base_url('store/brand/'.$value->id); ?>" class="list-group-item shadow-sm font-weight-bold text-decoration-none text-dark">
                             <img src="" style="width:35px"> <?= $value->nama_brand; ?>
                         </a>
                         <?php } ?> 
@@ -41,7 +41,7 @@
     <!-- data product -->
     <div class="row">
         <?php foreach ($product as $key => $value) { ?>
-            <div class="col-md-3 col-6 m-3">
+            <div class="col-md-3 m-3">
                 <div class="card h-100 border-0 shadow rounded-md">
 
                     <div class="card-img">

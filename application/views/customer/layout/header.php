@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-md-3 col-7">
-                    <a href="#" class="text-decoration-none" data-abc="true">
+                    <a href="<?= base_url() ?>" class="text-decoration-none" data-abc="true">
                         <span class="logo"><i class="fa fa-store"></i> BeliGadget </span></a>
                 </div>
                 <div class="col-md-5 d-none d-md-block">

@@ -23,6 +23,18 @@ class Store extends CI_Controller
 
         $this->load->view('customer/layout/wrapper', $data, false);
     }
+
+    public function brand($id)
+    {
+        $category = $this->m_store->category($id);
+        $data = array(
+            'title' => 'Brand Gadget',
+            'product' => $this->m_store->get_all_product_baseonbrand($id),
+            'content' => 'customer/v_brand'
+        );
+
+        $this->load->view('customer/layout/wrapper', $data, false);
+    }
 }
 
 /* End of file Dashboard.php */

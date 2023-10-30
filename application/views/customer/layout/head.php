@@ -13,6 +13,7 @@
         body {
             font-family: 'Quicksand', sans-serif;
             background: #e2e8f0;
+            
         }
 
         .logo {

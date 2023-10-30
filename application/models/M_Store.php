@@ -22,4 +22,21 @@ class M_Store extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function category($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_categories');
+        $this->db->where('id', $id);
+        return $this->db->get()->row();
+    }
+
+    public function get_all_product_baseonbrand($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_products');
+        $this->db->join('tbl_categories', 'tbl_categories.id = tbl_products.id_category', 'left');
+        $this->db->where('id', $id);
+        return $this->db->get()->result();
+    }
+
 }

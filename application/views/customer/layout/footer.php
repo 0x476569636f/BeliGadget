@@ -1,4 +1,4 @@
-<footer style="background: #ffffff;border-top: 5px solid #6677ef;" class="sticky-footer pt-5">
+<footer style="background: #ffffff;border-top: 5px solid #6677ef;" class="footer sticky-bottom pt-5">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-5 mb-4">
