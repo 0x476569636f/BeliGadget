@@ -10,6 +10,7 @@ class Store extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_store');
+        $this->load->model('m_sliders');
     }
 
     public function index()
@@ -18,6 +19,7 @@ class Store extends CI_Controller
             'title' => 'Dashboard Customers',
             'product' => $this->m_store->get_all_data(),
             'category' => $this->m_store->get_all_data_category(),
+            'slider' => $this->m_sliders->get_all_data_bystatus(),
             'content' => 'customer/v_index'
         );
 

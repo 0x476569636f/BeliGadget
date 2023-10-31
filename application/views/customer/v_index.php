@@ -7,10 +7,10 @@
                     <hr>
                     <ul class="list-group">
                         <?php foreach ($category as $key => $value) { ?>
-                        <a href="<?= base_url('store/brand/'.$value->id); ?>" class="list-group-item shadow-sm font-weight-bold text-decoration-none text-dark">
-                            <img src="" style="width:35px"> <?= $value->nama_brand; ?>
-                        </a>
-                        <?php } ?> 
+                            <a href="<?= base_url('store/brand/' . $value->id); ?>" class="list-group-item shadow-sm font-weight-bold text-decoration-none text-dark">
+                                <img src="" style="width:35px"> <?= $value->nama_brand; ?>
+                            </a>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -18,12 +18,15 @@
         <div class="col-md-9 mb-4">
             <div id="carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <a href="URL_GAMBAR_PERTAMA">
-                            <img src="https://store.appdev.my.id/storage/sliders/Z09lTl7YfqOGWbBK9n801YiHBz4VTdLeDJ6jlUm5.png" class="d-block w-100 rounded-lg" alt="Gambar Pertama">
-                        </a>
-                    </div>
-                    <div class="carousel-item"><img src="https://store.appdev.my.id/storage/sliders/ryojcgPNOd0QqSptsJ7Q9yc7JUqJWPXMx9tsNubw.png" class="d-block w-100 rounded-lg"></div>
+                    <?php foreach ($slider as $key => $value) { ?>
+                        <?php if ($value->status == 1) { ?>
+                            <div class="carousel-item <?php if($key < 1) {echo 'active';} ?>">
+                                <a href="<?= $value->link ?>">
+                                    <img src="<?= base_url('assets/sliders/' . $value->img) ?>" class="d-block w-100 rounded-lg" alt="Sliders">
+                                </a>
+                            </div>
+                        <?php } ?>
+                    <?php } ?>
                 </div><a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
             </div>
         </div>
@@ -53,7 +56,7 @@
                         </a>
 
                         <div class="discount mt-2" style="color: #999"><s>Rp. <?= number_format($value->price);  ?></s> <span style="background-color: darkorange" class="badge badge-pill badge-success text-white">DISKON
-                        <?= $value->discount ?> %</span>
+                                <?= $value->discount ?> %</span>
                         </div>
 
                         <div class="price font-weight-bold mt-3" style="color: #47b04b;font-size:20px">

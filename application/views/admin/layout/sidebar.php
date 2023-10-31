@@ -67,30 +67,42 @@
         ORDERS
     </div>
 
-    <li class="nav-item <?php if($this->uri->segment(1) ==  'orders'
-    ) {echo 'active'; } ?>">
+    <li class="nav-item <?php if (
+                            $this->uri->segment(1) ==  'orders'
+                        ) {
+                            echo 'active';
+                        } ?>">
         <a class="nav-link" href="#">
             <i class="fas fa-shopping-cart"></i>
             <span>ORDERS</span></a>
     </li>
 
-    <li class="nav-item <?php if($this->uri->segment(1) ==  'customers'
-    ) {echo 'active'; } ?>">
-        <a class="nav-link" href="<?= base_url('customers')?>">
+    <li class="nav-item <?php if (
+                            $this->uri->segment(1) ==  'customers'
+                        ) {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link" href="<?= base_url('customers') ?>">
             <i class="fas fa-users"></i>
             <span>CUSTOMERS</span></a>
     </li>
 
-    <li class="nav-item <?php if($this->uri->segment(1) ==  'sliders'
-    ) {echo 'active'; } ?>">
-        <a class="nav-link" href="#">
+    <li class="nav-item <?php if (
+                            $this->uri->segment(1) ==  'sliders'
+                        ) {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link" href="<?= base_url('sliders') ?>">
             <i class="fas fa-laptop"></i>
             <span>SLIDERS</span></a>
     </li>
 
-    <li class="nav-item <?php if($this->uri->segment(1) ==  'admins'
-    ) {echo 'active'; } ?>">
-        <a class="nav-link" href="<?= base_url('admins')?>">
+    <li class="nav-item <?php if (
+                            $this->uri->segment(1) ==  'admins'
+                        ) {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link" href="<?= base_url('admins') ?>">
             <i class="fas fa-users"></i>
             <span>ADMINS</span></a>
     </li>
