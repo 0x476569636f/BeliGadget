@@ -73,5 +73,23 @@
             margin-left: 5px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
+
+        .header-main{
+            background-color: #333333;
+        }
+
+        .fa-search {
+            color: #666666;
+        }
+
+
+        .account a{
+            background-color: #CCCCCC;
+            color: #333333;
+        }
+
+        .btn-primary {
+            background-color: #333333;
+        }
     </style>
 </head>

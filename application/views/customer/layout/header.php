@@ -20,7 +20,7 @@
                     <div class="d-flex justify-content-end">
 
                         <div class="cart-header">
-                            <a href="#" class="btn search-button btn-md" style="color: #ffffff;background-color: #6677ef;border-color: #ffffff;"><i class="fa fa-shopping-cart"></i> 0 | Rp. 0 </a>
+                            <a href="#" class="btn search-button btn-md" style="color: #ffffff;background-color: #666666;border-color: #ffffff;"><i class="fa fa-shopping-cart"></i> 0 | Rp. 0 </a>
                         </div>
 
                         <div class="account">
