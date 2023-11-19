@@ -13,6 +13,12 @@ class Shopping extends CI_Controller
 
     public function index()
     {
+        $data = array(
+            'title' => 'Keranjang',
+            'content' => 'customer/v_shopping'
+        );
+
+        $this->load->view('customer/layout/wrapper', $data, false);
     }
 
     public function add()
@@ -23,9 +29,18 @@ class Shopping extends CI_Controller
             'qty'     => $this->input->post('qty'),
             'name'    => $this->input->post('name'),
             'price'   => $this->input->post('price'),
+            'discount' => $this->input->post('discount'),
+            'weight' => $this->input->post('weight'),
+            'img' => $this->input->post('img'),
         );
 
         $this->cart->insert($data);
         redirect($redirect_page, 'refresh');
+    }
+
+    public function delete($rowid)
+    {
+        $this->cart->remove($rowid);
+        redirect('shopping');
     }
 }

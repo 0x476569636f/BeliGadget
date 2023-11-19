@@ -30,7 +30,7 @@
                         }
                         ?>
                         <div class="cart-header">
-                            <a href="#" class="btn search-button btn-md" style="color: #ffffff;background-color: #666666;border-color: #ffffff;"><i class="fa fa-shopping-cart"></i> <?= $item; ?> | Rp. <?php echo number_format($total); ?> </a>
+                            <a href="<?= base_url('shopping'); ?>" class="btn search-button btn-md" style="color: #ffffff;background-color: #666666;border-color: #ffffff;"><i class="fa fa-shopping-cart"></i> <?= $item; ?> | Rp. <?php echo number_format($total); ?> </a>
                         </div>
 
                         <div class="account">

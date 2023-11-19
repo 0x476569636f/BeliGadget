@@ -5,6 +5,9 @@
         echo form_hidden('name', $product->title);
         echo form_hidden('qty', 1);
         echo form_hidden('price', $product->price - ($product->price * $product->discount) / 100);
+        echo form_hidden('discount', $product->discount);
+        echo form_hidden('weight', $product->weight);
+        echo form_hidden('img', $product->img);
         echo form_hidden('redirect_page', current_url());    
     ?>
     <div class="row">
