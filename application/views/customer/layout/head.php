@@ -7,6 +7,9 @@
     <title>BeliGadget - Toko Online Beli Gadget Terpercaya No. 1 di Indonesia</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
 
@@ -90,6 +93,12 @@
 
         .btn-primary {
             background-color: #333333;
+            border: #333333;
+        }
+
+        .btn-primary:hover {
+            background-color: #000000;
+            border: #333333;
         }
     </style>
 </head>

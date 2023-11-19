@@ -18,9 +18,19 @@
                 </div>
                 <div class="col-md-4 col-5">
                     <div class="d-flex justify-content-end">
+                        
+                        <?php 
+                        $keranjang = $this->cart->contents();
+                        $item = 0;
+                        $total = 0;
 
+                        foreach ($keranjang as $key => $value){
+                            $item = $item + $value['qty'];
+                            $total = $total + $value['subtotal'];
+                        }
+                        ?>
                         <div class="cart-header">
-                            <a href="#" class="btn search-button btn-md" style="color: #ffffff;background-color: #666666;border-color: #ffffff;"><i class="fa fa-shopping-cart"></i> 0 | Rp. 0 </a>
+                            <a href="#" class="btn search-button btn-md" style="color: #ffffff;background-color: #666666;border-color: #ffffff;"><i class="fa fa-shopping-cart"></i> <?= $item; ?> | Rp. <?php echo number_format($total); ?> </a>
                         </div>
 
                         <div class="account">

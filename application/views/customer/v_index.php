@@ -62,7 +62,7 @@
                         <div class="price font-weight-bold mt-3" style="color: #47b04b;font-size:20px">
                             Rp. <?= number_format($value->price - ($value->price * $value->discount) / 100);  ?>
                         </div>
-                        <a class="btn btn-primary btn-md mt-3 btn-block shadow-md">LIHAT PRODUK</a>
+                        <a href="<?= base_url('store/detail_product/' . $value->id_product) ?>" class="btn btn-primary btn-md mt-3 btn-block shadow-md">LIHAT PRODUK</a>
                     </div>
                 </div>
 

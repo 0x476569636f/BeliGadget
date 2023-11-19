@@ -22,6 +22,15 @@ class M_Store extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function detail_product($id_product)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_products');
+        $this->db->join('tbl_categories', 'tbl_categories.id = tbl_products.id_category', 'left');
+        $this->db->where('id_product', $id_product);
+        return $this->db->get()->row();
+    }
+
     public function category($id)
     {
         $this->db->select('*');

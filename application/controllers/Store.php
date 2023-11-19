@@ -37,6 +37,17 @@ class Store extends CI_Controller
 
         $this->load->view('customer/layout/wrapper', $data, false);
     }
+
+    public function detail_product($id_product)
+    {
+        $data = array(
+            'title' => 'Detail Product',
+            'product' => $this->m_store->detail_product($id_product),
+            'content' => 'customer/v_detail'
+        );
+
+        $this->load->view('customer/layout/wrapper', $data, false);
+    }
 }
 
 /* End of file Dashboard.php */
