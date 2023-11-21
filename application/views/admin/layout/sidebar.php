@@ -107,6 +107,17 @@
             <span>ADMINS</span></a>
     </li>
 
+    <li class="nav-item <?php if (
+                            $this->uri->segment(2) ==  'settings'
+                        ) {
+                            echo 'active';
+                        } ?>">
+        <a class="nav-link" href="<?= base_url('admin/settings') ?>">
+            <i class="fas fa-cog"></i>
+            <span>SETTINGS TOKO</span></a>
+    </li>
+
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

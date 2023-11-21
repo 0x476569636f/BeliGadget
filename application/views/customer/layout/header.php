@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="account">
-                            <a href="#" class="btn search-button btn-md d-none d-md-block ml-4"><i class="fa fa-user-circle"></i> ACCOUNT</a>
+                            <a href="<?= base_url('customer/dashboard') ?>" class="btn search-button btn-md d-none d-md-block ml-4"><i class="fa fa-user-circle"></i> ACCOUNT</a>
                         </div>
 
                     </div>

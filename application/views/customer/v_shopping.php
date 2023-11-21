@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <div class="card border-0 shadow rounded">
                 <div class="card-body">
-                    <h5><i class="fa fa-shopping-cart"></i> DETAIL PESENAN</h5>
+                    <h5><i class="fa fa-shopping-cart"></i> DETAIL PESANAN</h5>
                     <hr>
                     <table class="table" style="border-style: solid !important;border-color: rgb(198, 206, 214) !important;">
                         <tbody>
