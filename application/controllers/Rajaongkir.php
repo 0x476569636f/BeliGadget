@@ -82,7 +82,7 @@ class Rajaongkir extends CI_Controller
             // print_r($array_response['rajaongkir']['results'])
             $data_kota = $array_response['rajaongkir']['results'];
             foreach ($data_kota as $key => $value) {
-                echo "<option value='" . $value['city_id'] . "," . $value['city_name'] . "'>" . $value['type'] . " " . $value['city_name'] . "</option>";
+                echo "<option value='" . $value['city_id'] . "," . $value['city_name'] ." " . $value['type'] ."'>" . $value['type'] . " " . $value['city_name'] . "</option>";
             }
         }
     }

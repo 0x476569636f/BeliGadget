@@ -30,6 +30,7 @@ class Customers extends CI_Controller
         $this->session->set_flashdata('pesan', 'Data Berhasil Di Hapus !');
         redirect('customers');
     }
+
 }
 
 /* End of file Costumers.php */

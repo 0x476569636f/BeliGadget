@@ -96,22 +96,28 @@
                 <!-- start ongkos kirim -->
 
                 <div class="card-body">
+                <?php echo validation_errors('<div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5>', '</h5> </div>');
+                ?>
                     <h5><i class="fa fa-user-circle"></i> RINCIAN PENGIRIMAN</h5>
                     <hr>
-
+                    <?php echo form_open('shopping/index');
+                    $no_order = date('Ymd') . strtoupper(random_string('alnum', 8))
+                    ?>
                     <div class="row">
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="font-weight-bold">NAMA LENGKAP</label>
-                                <input type="text" class="form-control" id="nama_lengkap" placeholder="Nama Lengkap">
+                                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" required>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="font-weight-bold">NO. HP / WHATSAPP</label>
-                                <input type="number" class="form-control" id="phone" placeholder="No. HP / WhatsApp">
+                                <input type="number" class="form-control" id="phone" name="phone" placeholder="No. HP / WhatsApp" required>
                             </div>
                         </div>
 
@@ -163,15 +169,30 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="font-weight-bold">ALAMAT LENGKAP</label>
-                                <textarea class="form-control" id="alamat" rows="3" placeholder="Alamat Lengkap&#10;&#10;Contoh: Perum. Griya Palem Indah, B-17 Jombang Jawa Timur 61419"></textarea>
+                                <textarea class="form-control" name="alamat" id="alamat" rows="3" placeholder="Alamat Lengkap&#10;&#10;Contoh: Perum. Griya Palem Indah, B-17 Jombang Jawa Timur 61419" required></textarea>
                             </div>
                         </div>
 
+                        <!-- tx -->
+                        <input name="no_order" value="<?= $no_order; ?>" type="hidden">
+                        <input name="ongkir" type="hidden">
+                        <input name="weight" value="<?= $weight; ?>" type="hidden">
+                        <input name="total_bayar" type="hidden">
+                        <input name="id_customer" value="<?=  $this->session->userdata('id_customer'); ?>" type="hidden">
+                        <!-- detail tx -->
+                        <?php
+                        $i = 1;
+                        foreach ($this->cart->contents() as $items){
+                            echo form_hidden('qty' . $i++, $items['qty']);
+
+                        }
+                        ?>
                         <div class="col-md-12">
-                            <button class="btn btn-primary btn-lg btn-block">CHECKOUT</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">CHECKOUT</button>
                         </div>
 
                     </div>
+                    <?php echo form_close() ?>
 
                 </div>
 
@@ -260,6 +281,8 @@
         } else {
             console.error("Invalid ongkirValue");
         }
+        $("input[name=ongkir]").val(ongkirValue);
+        $("input[name=total_bayar]").val(bill);
     });
 
 
@@ -273,3 +296,12 @@
 </script>
 
 <i class="fa fa-subscript" aria-hidden="true"></i>
+
+<script src="<?= base_url() ?>template/vendor/jquery/jquery.min.js"></script>
+<script>
+    window.setTimeout(() => {
+        $(".alert").fadeTo(500, 0).slideUp(500, () => {
+            $(this).remove();
+        })
+    }, 2500)
+</script>

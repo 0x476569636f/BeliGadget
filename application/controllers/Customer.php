@@ -10,6 +10,7 @@ class Customer extends CI_Controller
         parent::__construct();
         $this->load->model('m_customer');
         $this->load->model('m_customerauth');
+        $this->load->model('m_orders');
     }
 
     public function register()
@@ -128,6 +129,28 @@ class Customer extends CI_Controller
     public function logout()
     {
         $this->customer_login->logout();
+    }
+
+    public function my_orders()
+    {
+        $data = array(
+            'title' => 'Pesanan Saya',
+            'orders' => $this->m_orders->get_data_by_logged_id(),
+            'content' => 'customer/v_my_orders'
+        );
+
+        $this->load->view('customer/layout/wrapper', $data, false);
+    }
+
+    public function details_order($no_order)
+    {
+        $data = array(
+            'title' => 'Pesanan Saya',
+            'details' => $this->m_orders->get_details_order($no_order),
+            'content' => 'customer/v_details_order'
+        );
+
+        $this->load->view('customer/layout/wrapper', $data, false);
     }
 }
 
