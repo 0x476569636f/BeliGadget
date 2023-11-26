@@ -186,7 +186,8 @@ class Customer extends CI_Controller
             );
         }
 
-        
+        //Include ongkir
+        $item_details[0]['price'] += $keranjang->ongkir;
 
         
 
