@@ -93,15 +93,68 @@ class Customer extends CI_Controller
         $this->load->view('customer/layout/wrapper', $data, false);
     }
 
-    public function dashboard()
+    public function account()
     {
-        $data = array(
-            'title' => 'Dashboard Pelanggan',
-            'content' => 'customer/v_dashboard'
+        $this->form_validation->set_rules(
+            'currentPassword',
+            'Password Saat Ini',
+            'required|min_length[8]|callback_check_current_password',
+            array(
+                'required' => '%s Harus Di Isi !',
+                'min_length' => '%s Minimal 8 Karakter',
+                'callback_check_current_password' => '%s Salah'
+            )
         );
 
-        $this->load->view('customer/layout/wrapper', $data, false);
+        $this->form_validation->set_rules(
+            'newPassword',
+            'Password Baru',
+            'required|min_length[8]',
+            array(
+                'required' => '%s Harus Di Isi !',
+                'min_length' => '%s Minimal 8 Karakter'
+            )
+        );
+
+        $this->form_validation->set_rules(
+            'confirmPassword',
+            'Konfirmasi Password',
+            'required|matches[newPassword]',
+            array(
+                'required' => '%s Harus Di Isi !',
+                'matches' => '%s Tidak Sama'
+            )
+        );
+
+        if ($this->form_validation->run() == FALSE) {
+            $data = array(
+                'title' => 'Dashboard Pelanggan',
+                'content' => 'customer/v_dashboard'
+            );
+    
+            $this->load->view('customer/layout/wrapper', $data, false);
+        } else {
+            $data = array(
+                'id_customer' => $this->session->userdata('id_customer'),
+                'password' => md5($this->input->post('newPassword')),
+            );
+
+            $this->m_customer->update_password($data);
+            $this->session->set_flashdata('pesan', 'Password Berhasil Di Update !');
+            redirect('customer/account');
+        }
     }
+
+    public function check_current_password($currentPassword) {
+        $user = $this->m_customer->get_customer_by_id($this->session->userdata('id_customer'));
+    
+        if (!$user || $user->password !== md5($currentPassword)) {
+            $this->form_validation->set_message('check_current_password', 'Password saat ini salah');
+            return FALSE;
+        }
+    
+        return TRUE;
+    }    
 
     private function set_validation_rules()
     {
