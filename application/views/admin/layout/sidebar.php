@@ -72,7 +72,7 @@
                         ) {
                             echo 'active';
                         } ?>">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?= base_url('orders') ?>">
             <i class="fas fa-shopping-cart"></i>
             <span>ORDERS</span></a>
     </li>

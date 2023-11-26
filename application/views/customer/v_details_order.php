@@ -38,7 +38,7 @@
                             </td>
                             <td>:</td>
                             <td data-nama="<?= $details[0]->nama_penerima ?>">
-                                <?= isset($details[0]->nama_penerima) ? $details[0]->nama_penerima : 'N/A'; ?>
+                                <?= strtoupper(isset($details[0]->nama_penerima) ? $details[0]->nama_penerima : 'N/A'); ?>
                             </td>
                         </tr>
                         <tr>
@@ -80,16 +80,40 @@
                         </tr>
                         <tr>
                             <td>
+                                METODE PEMBAYARAN
+                            </td>
+                            <td>:</td>
+                            <td>
+                                <?= strtoupper(isset($details[0]->provider) ? $details[0]->provider : 'N/A'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 STATUS
                             </td>
                             <td>:</td>
                             <td>
-                                <?php if($details[0]->status == 0) {?>
-                                <button id="pay-button" data-nama="<?= $details[0]->nama_penerima ?>" data-alamat="<?= $details[0]->alamat ?>" data-no_hp="<?= $details[0]->no_telp ?>" data-no_order="<?= $details[0]->no_order ?>" data-amount="<?= $details[0]->total_bayar ?>" class="btn btn-primary">BAYAR
-                                    SEKARANG</button>
-                                <?php } else { ?>
-                                <button class="btn btn-success">Sudah di bayar</button>
+                                <?php if ($details[0]->status == 0) { ?>
+                                    <button id="pay-button" data-nama="<?= $details[0]->nama_penerima ?>" data-alamat="<?= $details[0]->alamat ?>" data-no_hp="<?= $details[0]->no_telp ?>" data-no_order="<?= $details[0]->no_order ?>" data-amount="<?= $details[0]->total_bayar ?>" class="btn btn-primary">BAYAR
+                                        SEKARANG</button>
+                                <?php } else if ($details[0]->status == 1) { ?>
+                                    <button class="btn btn-success">Sudah di bayar</button>
+                                <?php } else if ($details[0]->status == 2) { ?>
+                                    <button class="btn btn-success">Sedang Dikirim</button>
+                                <?php } else if ($details[0]->status == 3) { ?>
+                                    <button class="btn btn-success">Diterima</button>
+                                <?php } else if ($details[0]->status == 4) { ?>
+                                    <button class="btn btn-danger">Dibatalkan</button>
                                 <?php } ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                NO RESI
+                            </td>
+                            <td>:</td>
+                            <td>
+                                <?= isset($details[0]->no_resi) ? $details[0]->no_resi : 'Belum Di Input'; ?>
                             </td>
                         </tr>
                     </table>
