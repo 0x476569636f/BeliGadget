@@ -138,7 +138,7 @@
                                     <tr>
                                         <td style="padding: .20rem">QTY</td>
                                         <td style="padding: .20rem">:</td>
-                                        <td style="padding: .20rem"><b><?= isset($details[0]->qty) ? $details[0]->qty : 'N/A'; ?></b></td>
+                                        <td style="padding: .20rem"><b><?= isset($value->qty) ? $value->qty : 'N/A'; ?></b></td>
                                     </tr>
                                 </table>
                             </td>

@@ -74,6 +74,7 @@ class Shopping extends CI_Controller
                 );
                 $this->m_orders->simpan_detail_transaksi($datadetails);
             }
+            $this->cart->destroy();
             $this->session->set_flashdata('pesan', 'Pesanan Berhasil Di Simpan !');
             redirect('customer/my_orders');
         }

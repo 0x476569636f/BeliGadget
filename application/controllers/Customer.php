@@ -176,15 +176,19 @@ class Customer extends CI_Controller
         );
 
         $item_details = array();
-
+        
         foreach ($datakeranjang as $keranjang) {
             $item_details[] = array(
                 'id' => $keranjang->id_product,
-                'price' => $keranjang->price - ($keranjang->price * $keranjang->discount / 100) + ($keranjang->ongkir / count($datakeranjang)),
+                'price' => $keranjang->price - ($keranjang->price * $keranjang->discount / 100),
                 'quantity' => $keranjang->qty,
                 'name' => $keranjang->product_name
             );
         }
+
+        
+
+        
 
         // // Optional
         // $item1_details = array(
