@@ -52,9 +52,26 @@ class M_orders extends CI_Model
         }
     }
 
-    public function update_status($no_order){
+
+    //admin
+    public function get_all_data()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_orders');
+        $this->db->order_by('id_order', 'desc');
+        return $this->db->get()->result();
+    }
+
+    //Input Resi
+    public function updateresi($data){
         $this->db->where('no_order', $data['no_order']);
-        $this->db->update('tbl_categories', $data);
+        $this->db->update('tbl_orders', $data);
+    }
+
+    //Ganti Status
+    public function gantistatus($data){
+        $this->db->where('no_order', $data['no_order']);
+        $this->db->update('tbl_orders', $data);
     }
 }
 
