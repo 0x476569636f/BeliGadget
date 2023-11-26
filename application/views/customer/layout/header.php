@@ -7,8 +7,8 @@
                         <span class="logo"><i class="fa fa-store"></i> BeliGadget </span></a>
                 </div>
                 <div class="col-md-5 d-none d-md-block">
-                    <form class="search-wrap">
-                        <div class="input-group w-100"><input type="text" class="form-control search-form" style="width:55%;border: 1px solid #ffffff" name="q" placeholder="mau beli apa hari ini ?">
+                    <form action="<?= site_url('store/search') ?>" method="post" class="search-wrap">
+                        <div class="input-group w-100"><input type="text" class="form-control search-form" style="width:55%;border: 1px solid #ffffff" name="search_title" placeholder="mau beli apa hari ini ?">
                             <div class="input-group-append">
                                 <button class="btn search-button" type="submit"><i class="fa fa-search"></i>
                                 </button>

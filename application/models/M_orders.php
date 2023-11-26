@@ -51,6 +51,11 @@ class M_orders extends CI_Model
             return FALSE;
         }
     }
+
+    public function update_status($no_order){
+        $this->db->where('no_order', $data['no_order']);
+        $this->db->update('tbl_categories', $data);
+    }
 }
 
 
