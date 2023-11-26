@@ -1,3 +1,7 @@
+<form id="payment-form" method="post" action="<?= site_url() ?>/customer/finish">
+    <input type="hidden" name="result_type" id="result-type" value=""></div>
+    <input type="hidden" name="result_data" id="result-data" value=""></div>
+</form>
 <div class="container-fluid mb-5 mt-4">
     <div class="row">
         <div class="col-md-3 mb-4">
@@ -25,7 +29,7 @@
                             </td>
                             <td style="width: 1%">:</td>
                             <td>
-                            <?= isset($details[0]->no_order) ? $details[0]->no_order : 'N/A'; ?>
+                                <?= isset($details[0]->no_order) ? $details[0]->no_order : 'N/A'; ?>
                             </td>
                         </tr>
                         <tr>
@@ -33,8 +37,8 @@
                                 NAMA LENGKAP
                             </td>
                             <td>:</td>
-                            <td>
-                            <?= isset($details[0]->nama_penerima) ? $details[0]->nama_penerima : 'N/A'; ?>
+                            <td data-nama="<?= $details[0]->nama_penerima ?>">
+                                <?= isset($details[0]->nama_penerima) ? $details[0]->nama_penerima : 'N/A'; ?>
                             </td>
                         </tr>
                         <tr>
@@ -43,7 +47,7 @@
                             </td>
                             <td>:</td>
                             <td>
-                            <?= isset($details[0]->no_telp) ? $details[0]->no_telp : 'N/A'; ?>
+                                <?= isset($details[0]->no_telp) ? $details[0]->no_telp : 'N/A'; ?>
                             </td>
                         </tr>
                         <tr>
@@ -52,8 +56,8 @@
                             </td>
                             <td>:</td>
                             <td>
-                            <?= isset($details[0]->courier) ? strtoupper($details[0]->courier) : 'N/A'; ?> / <?= isset($details[0]->layanan_courier) ? strtoupper($details[0]->layanan_courier) : 'N/A'; ?> / Rp.
-                            <?= isset($details[0]->ongkir) ? $details[0]->ongkir : 'N/A'; ?>
+                                <?= isset($details[0]->courier) ? strtoupper($details[0]->courier) : 'N/A'; ?> / <?= isset($details[0]->layanan_courier) ? strtoupper($details[0]->layanan_courier) : 'N/A'; ?> / Rp.
+                                <?= isset($details[0]->ongkir) ? $details[0]->ongkir : 'N/A'; ?>
                             </td>
                         </tr>
                         <tr>
@@ -62,7 +66,7 @@
                             </td>
                             <td>:</td>
                             <td>
-                            <?= isset($details[0]->alamat) ? $details[0]->alamat : 'N/A'; ?>
+                                <?= isset($details[0]->alamat) ? $details[0]->alamat : 'N/A'; ?>
                             </td>
                         </tr>
                         <tr>
@@ -80,11 +84,12 @@
                             </td>
                             <td>:</td>
                             <td>
-                                <button @click="payment(detailOrder.snap_token)" v-if="detailOrder.status == 'pending'" class="btn btn-primary">BAYAR
+                                <?php if($details[0]->status == 0) {?>
+                                <button id="pay-button" data-nama="<?= $details[0]->nama_penerima ?>" data-alamat="<?= $details[0]->alamat ?>" data-no_hp="<?= $details[0]->no_telp ?>" data-no_order="<?= $details[0]->no_order ?>" data-amount="<?= $details[0]->total_bayar ?>" class="btn btn-primary">BAYAR
                                     SEKARANG</button>
-                                <button v-else-if="detailOrder.status == 'success'" class="btn btn-success">{{ detailOrder.status }}</button>
-                                <button v-else-if="detailOrder.status == 'expired'" class="btn btn-warning">{{ detailOrder.status }}</button>
-                                <button v-else-if="detailOrder.status == 'failed'" class="btn btn-danger">{{ detailOrder.status }}</button>
+                                <?php } else { ?>
+                                <button class="btn btn-success">Sudah di bayar</button>
+                                <?php } ?>
                             </td>
                         </tr>
                     </table>
@@ -95,36 +100,98 @@
                 <div class="card-body">
                     <h5><i class="fa fa-shopping-cart"></i> DETAIL ORDER</h5>
                     <hr>
-                    <?php foreach($details as $value) { ?>
-                    <table class="table" style="border-style: solid !important;border-color: rgb(198, 206, 214) !important;">
-                        <tbody>
+                    <?php foreach ($details as $value) { ?>
+                        <table class="table" style="border-style: solid !important;border-color: rgb(198, 206, 214) !important;">
+                            <tbody>
 
-                            <tr style="background: #edf2f7;">
-                                <td class="b-none" width="25%">
-                                    <div class="wrapper-image-cart">
-                                        <img src="<?= base_url('assets/products_img/'.$value->image) ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: .5rem;">
-                                    </div>
-                                </td>
-                                <td class="b-none" width="50%">
-                                    <h5><b><?= $value->product_name ?></b></h5>
-                                    <table class="table-borderless" style="font-size: 14px">
-                                        <tr>
-                                            <td style="padding: .20rem">QTY</td>
-                                            <td style="padding: .20rem">:</td>
-                                            <td style="padding: .20rem"><b><?= isset($details[0]->qty) ? $details[0]->qty : 'N/A'; ?></b></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td class="b-none text-right">
-                                    <p class="m-0 font-weight-bold">Rp. <?= number_format($value->price - ($value->price * $value->discount / 100)) ?></p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <tr style="background: #edf2f7;">
+                                    <td class="b-none" width="25%">
+                                        <div class="wrapper-image-cart">
+                                            <img src="<?= base_url('assets/products_img/' . $value->image) ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: .5rem;">
+                                        </div>
+                                    </td>
+                                    <td class="b-none" width="50%">
+                                        <h5><b><?= $value->product_name ?></b></h5>
+                                        <table class="table-borderless" style="font-size: 14px">
+                                            <tr>
+                                                <td style="padding: .20rem">QTY</td>
+                                                <td style="padding: .20rem">:</td>
+                                                <td style="padding: .20rem"><b><?= isset($details[0]->qty) ? $details[0]->qty : 'N/A'; ?></b></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="b-none text-right">
+                                        <p class="m-0 font-weight-bold">Rp. <?= number_format($value->price - ($value->price * $value->discount / 100)) ?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     <?php } ?>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-wa-wyKb-Pv2vsXiG"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $('#pay-button').click(function(event) {
+        var grossamount = $(this).data('amount');
+        var no_order = $(this).data('no_order');
+        var nama = $(this).data('nama');
+        var alamat = $(this).data('alamat');
+        var no_hp = $(this).data('no_hp');
+        event.preventDefault();
+        $(this).attr("disabled", "disabled");
+
+        $.ajax({
+            url: '<?= site_url() ?>/customer/token',
+            cache: false,
+            data: {
+                grossamount: grossamount,
+                no_order: no_order,
+                nama: nama,
+                alamat: alamat,
+                no_hp: no_hp
+            },
+
+            success: function(data) {
+                //location = data;
+
+                console.log('token = ' + data);
+
+                var resultType = document.getElementById('result-type');
+                var resultData = document.getElementById('result-data');
+
+                function changeResult(type, data) {
+                    $("#result-type").val(type);
+                    $("#result-data").val(JSON.stringify(data));
+                    //resultType.innerHTML = type;
+                    //resultData.innerHTML = JSON.stringify(data);
+                }
+
+                snap.pay(data, {
+
+                    onSuccess: function(result) {
+                        changeResult('success', result);
+                        console.log(result.status_message);
+                        console.log(result);
+                        $("#payment-form").submit();
+                    },
+                    onPending: function(result) {
+                        changeResult('pending', result);
+                        console.log(result.status_message);
+                        $("#payment-form").submit();
+                    },
+                    onError: function(result) {
+                        changeResult('error', result);
+                        console.log(result.status_message);
+                        $("#payment-form").submit();
+                    }
+                });
+            }
+        });
+    });
+</script>

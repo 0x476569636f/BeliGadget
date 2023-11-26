@@ -11,6 +11,7 @@ class Store extends CI_Controller
         parent::__construct();
         $this->load->model('m_store');
         $this->load->model('m_sliders');
+        $this->load->model('m_search');
     }
 
     public function index()
@@ -47,6 +48,18 @@ class Store extends CI_Controller
         );
 
         $this->load->view('customer/layout/wrapper', $data, false);
+    }
+
+    public function search() {
+        $search_title = $this->input->post('search_title');
+
+    
+        // Call a method in your model to get search results
+        $data['products'] = $this->m_search->searchProducts($search_title);
+        $data['title'] = $search_title;
+        $data['content'] = 'customer/v_res';
+        // Load your view
+        $this->load->view('customer/layout/wrapper', $data);
     }
 }
 

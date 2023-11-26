@@ -57,3 +57,12 @@ if ($this->session->flashdata('pesan')) {
         </div>
     </div>
 </div>
+
+<script src="<?= base_url() ?>template/vendor/jquery/jquery.min.js"></script>
+<script>
+    window.setTimeout(() => {
+        $(".alert").fadeTo(500, 0).slideUp(500, () => {
+            $(this).remove();
+        })
+    }, 2500)
+</script>

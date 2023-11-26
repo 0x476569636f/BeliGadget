@@ -7,7 +7,7 @@
     </div>
     <!-- data product -->
     <div class="row">
-        <?php foreach ($product as $key => $value) { ?>
+        <?php foreach ($products as $key => $value) { ?>
             <div class="col-md-3 mt-4">
                 <div class="card h-100 border-0 shadow rounded-md">
 
