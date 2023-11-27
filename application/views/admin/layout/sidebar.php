@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-store"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">BeliGadget<sup>.com</sup></div>
+        <div class="sidebar-brand-text mx-3"><?= $settings->nama_toko ?><sup>.com</sup></div>
     </a>
 
     <!-- Divider -->

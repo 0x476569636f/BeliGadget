@@ -9,6 +9,7 @@ class Admins extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_admins');
+        $this->load->model('m_settings');
     }
 
     public function index()
@@ -16,6 +17,7 @@ class Admins extends CI_Controller
         $data = array(
             'title' => 'Admins',
             'admin' => $this->m_admins->get_all_data(),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'admin/v_admins'
         );
 

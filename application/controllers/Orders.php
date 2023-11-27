@@ -9,6 +9,7 @@ class Orders extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_orders');
+        $this->load->model('m_settings');
     }
 
     public function index()
@@ -16,6 +17,7 @@ class Orders extends CI_Controller
         $data = array(
             'title' => 'Data Orders',
             'orders' => $this->m_orders->get_all_data(),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'admin/v_orders'
         );
 
@@ -27,6 +29,7 @@ class Orders extends CI_Controller
         $data = array(
             'title' => $no_order,
             'details' => $this->m_orders->get_details_order($no_order),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'admin/v_details_orders'
         );
 

@@ -74,11 +74,12 @@
                 <p>
                     <i class="fa fa-envelope"></i> Email:
                     <br>
-                    cs@beligadget.com
+                    <?= $settings->email; ?>
                 </p>
                 <p>
-                    <i class="fa fa-map-marker"></i> Desa Cimahpar, RT/RW : 003/003, Kecamatan Bogor Utara, Kota
-                    Bogor, Jawa Barat, 16155
+                    <i class="fa fa-map-marker"></i> Alamat:
+                    <br>
+                    <?= strip_tags($settings->alamat_toko); ?>
                 </p>
             </div>
         </div>
