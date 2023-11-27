@@ -52,6 +52,12 @@ class M_orders extends CI_Model
         }
     }
 
+    public function diterima($data)
+    {
+        $this->db->where('id_order', $data['id_order']);
+        $this->db->update('tbl_orders', $data);
+    }
+
 
     //admin
     public function get_all_data()
