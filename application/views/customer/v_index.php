@@ -53,9 +53,9 @@
                         <img src="<?= base_url('assets/products_img/' . $value->img); ?>" class="img-fluid" style="height: 15em;object-fit:cover;border-top-left-radius: .25rem;border-top-right-radius: .25rem;">
                     </div>
                     <div class="card-body">
-                        <a class="card-title font-weight-bold" style="font-size:20px">
+                        <h5 class="card-title font-weight-bold" style="font-size:20px">
                             <?= $value->title; ?>
-                        </a>
+                        </h5>
 
                         <div class="discount mt-2" style="color: #999"><s>Rp. <?= number_format($value->price);  ?></s> <span style="background-color: darkorange" class="badge badge-pill badge-success text-white">DISKON
                                 <?= $value->discount ?> %</span>
