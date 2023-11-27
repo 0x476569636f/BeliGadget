@@ -20,7 +20,9 @@
                 <div class="carousel-inner">
                     <?php foreach ($slider as $key => $value) { ?>
                         <?php if ($value->status == 1) { ?>
-                            <div class="carousel-item <?php if($key < 1) {echo 'active';} ?>">
+                            <div class="carousel-item <?php if ($key < 1) {
+                                                            echo 'active';
+                                                        } ?>">
                                 <a href="<?= $value->link ?>">
                                     <img src="<?= base_url('assets/sliders/' . $value->img) ?>" class="d-block w-100 rounded-lg" alt="Sliders">
                                 </a>
@@ -47,8 +49,8 @@
             <div class="col-md-3 mt-4">
                 <div class="card h-100 border-0 shadow rounded-md">
 
-                    <div class="card-img">
-                        <img src="<?= base_url('assets/products_img/' . $value->img); ?>" class="w-100" style="height: 15em;object-fit:cover;border-top-left-radius: .25rem;border-top-right-radius: .25rem;">
+                    <div class="card-img text-center">
+                        <img src="<?= base_url('assets/products_img/' . $value->img); ?>" class="img-fluid" style="height: 15em;object-fit:cover;border-top-left-radius: .25rem;border-top-right-radius: .25rem;">
                     </div>
                     <div class="card-body">
                         <a class="card-title font-weight-bold" style="font-size:20px">
