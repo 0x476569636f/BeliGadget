@@ -107,6 +107,7 @@
                                 <?php } ?>
                             </td>
                         </tr>
+                        <?php if(isset($details[0]->no_resi)) { ?>
                         <tr>
                             <td>
                                 NO RESI
@@ -116,6 +117,18 @@
                                 <?= isset($details[0]->no_resi) ? $details[0]->no_resi : 'Belum Di Input'; ?>
                             </td>
                         </tr>
+                        <?php } ?>
+                        <?php if ($details[0]->status == 2) { ?>
+                        <tr>
+                            <td>
+                                TERIMA PESANAN
+                            </td>
+                            <td>:</td>
+                            <td>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#diterima<?= $details[0]->id_order ?>">Terima Pesanan</button>
+                            </td>
+                        </tr>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
@@ -141,7 +154,7 @@
                                                 <td style="padding: .20rem">QTY</td>
                                                 <td style="padding: .20rem">:</td>
                                                 <td style="padding: .20rem"><b><?= isset($value->qty) ? $value
-                                                ->qty : 'N/A'; ?></b></td>
+                                                                                    ->qty : 'N/A'; ?></b></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -156,6 +169,39 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal Pesanan Diterima -->
+<div class="modal fade" id="diterima<?= $value->id_order ?>">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Konfirmasi Pesanan <?= $value->no_order;  ?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php
+                echo form_open('customer/diterima/' . $value->id_order);
+                echo form_hidden('no_order', $value->no_order);
+                ?>
+                <div class="form-group">
+                    <h6>Apakah Anda yakin pesanan ini telah diterima?</h6>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-primary">Ya</button>
+                </div>
+                <?php
+                echo form_close();
+                ?>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </div>
 
 <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-wa-wyKb-Pv2vsXiG"></script>

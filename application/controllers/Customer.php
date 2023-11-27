@@ -337,6 +337,19 @@ class Customer extends CI_Controller
         echo '</pre>';
         redirect('customer/details_order/'.$no_order);
     }
+
+    //Terima Pesanan
+    public function diterima($id_order)
+    {
+        $no_order = $this->input->post('no_order');
+        $data = array(
+            'id_order' => $id_order,
+            'status' => 3,
+        );
+
+        $this->m_orders->diterima($data);
+        redirect('customer/details_order/'.$no_order);
+    }
 }
 
 /* End of file Customer.php */
