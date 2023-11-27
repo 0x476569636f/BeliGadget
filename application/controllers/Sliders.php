@@ -9,6 +9,7 @@ class Sliders extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_sliders');
+        $this->load->model('m_settings');
     }
 
     public function index()
@@ -16,6 +17,7 @@ class Sliders extends CI_Controller
         $data = array(
             'title' => 'Data Sliders',
             'sliders' => $this->m_sliders->get_all_data(),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'admin/v_sliders'
         );
 

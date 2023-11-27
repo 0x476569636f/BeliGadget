@@ -11,6 +11,7 @@ class Customer extends CI_Controller
         $this->load->model('m_customer');
         $this->load->model('m_customerauth');
         $this->load->model('m_orders');
+        $this->load->model('m_settings');
         $params = array('server_key' => 'SB-Mid-server-gBzBH8USgTUaGGBIA2jIIIQr', 'production' => false);
         header("Access-Control-Allow-Origin: *");
         header("Access-Control-Allow-Methods: PUT, GET, POST");
@@ -62,6 +63,7 @@ class Customer extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $data = array(
                 'title' => 'Register Pelanggan',
+                'settings' => $this->m_settings->get_data(),
                 'content' => 'customer/v_register'
             );
 
@@ -87,6 +89,7 @@ class Customer extends CI_Controller
         }
         $data = array(
             'title' => 'Login Pelanggan',
+            'settings' => $this->m_settings->get_data(),
             'content' => 'customer/v_login'
         );
 
@@ -129,6 +132,7 @@ class Customer extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $data = array(
                 'title' => 'Dashboard Pelanggan',
+                'settings' => $this->m_settings->get_data(),
                 'content' => 'customer/v_dashboard'
             );
     
@@ -196,6 +200,7 @@ class Customer extends CI_Controller
         $data = array(
             'title' => 'Pesanan Saya',
             'orders' => $this->m_orders->get_data_by_logged_id(),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'customer/v_my_orders'
         );
 
@@ -207,6 +212,7 @@ class Customer extends CI_Controller
         $data = array(
             'title' => 'Pesanan Saya',
             'details' => $this->m_orders->get_details_order($no_order),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'customer/v_details_order'
         );
 

@@ -12,6 +12,8 @@ class Categories extends CI_Controller
         parent::__construct();
         //Load Dependencies
         $this->load->model('m_categories');
+        $this->load->model('m_settings');
+        
     }
 
     // List all your items
@@ -20,6 +22,7 @@ class Categories extends CI_Controller
         $data = array(
             'title' => 'Kategori',
             'categories' => $this->m_categories->get_all_data(),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'admin/v_categories'
         );
 

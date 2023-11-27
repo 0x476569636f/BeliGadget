@@ -10,6 +10,7 @@ class Shopping extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_orders');
+        $this->load->model('m_settings');
     }
 
     public function index()
@@ -42,6 +43,7 @@ class Shopping extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data = array(
                 'title' => 'Keranjang',
+                'settings' => $this->m_settings->get_data(),
                 'content' => 'customer/v_shopping'
             );
 

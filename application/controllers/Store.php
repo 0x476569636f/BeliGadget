@@ -12,6 +12,7 @@ class Store extends CI_Controller
         $this->load->model('m_store');
         $this->load->model('m_sliders');
         $this->load->model('m_search');
+        $this->load->model('m_settings');
     }
 
     public function index()
@@ -19,6 +20,7 @@ class Store extends CI_Controller
         $data = array(
             'title' => 'Dashboard Customers',
             'product' => $this->m_store->get_all_data(),
+            'settings' => $this->m_settings->get_data(),
             'category' => $this->m_store->get_all_data_category(),
             'slider' => $this->m_sliders->get_all_data_bystatus(),
             'content' => 'customer/v_index'
@@ -32,6 +34,7 @@ class Store extends CI_Controller
         $category = $this->m_store->category($id);
         $data = array(
             'title' => 'Gadget ' . $category->nama_brand,
+            'settings' => $this->m_settings->get_data(),
             'product' => $this->m_store->get_all_product_baseonbrand($id),
             'content' => 'customer/v_brand'
         );
@@ -43,6 +46,7 @@ class Store extends CI_Controller
     {
         $data = array(
             'title' => 'Detail Product',
+            'settings' => $this->m_settings->get_data(),
             'product' => $this->m_store->detail_product($id_product),
             'content' => 'customer/v_detail'
         );
@@ -58,6 +62,7 @@ class Store extends CI_Controller
         $data['products'] = $this->m_search->searchProducts($search_title);
         $data['title'] = $search_title;
         $data['content'] = 'customer/v_res';
+        $data['settings'] = $this->m_settings->get_data();
         // Load your view
         $this->load->view('customer/layout/wrapper', $data);
     }

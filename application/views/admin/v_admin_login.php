@@ -24,9 +24,6 @@
         <div class="row justify-content-center">
 
             <div class="col-md-4">
-                <div class="img-logo text-center mt-5">
-                    <b>BeliGadget</b>.com
-                </div>
                 <div class="card o-hidden border-0 shadow-lg mb-3 mt-5">
                     <div class="card-body p-4">
                         <div class="text-center">

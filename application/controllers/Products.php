@@ -10,6 +10,7 @@ class Products extends CI_Controller
         parent::__construct();
         $this->load->model('m_products');
         $this->load->model('m_categories');
+        $this->load->model('m_settings');
     }
 
     public function index()
@@ -17,6 +18,7 @@ class Products extends CI_Controller
         $data = array(
             'title' => 'Produk',
             'products' => $this->m_products->get_all_data(),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'admin/products/v_products',
         );
 
@@ -77,6 +79,7 @@ class Products extends CI_Controller
                 $data = array(
                     'title' => 'Add Product',
                     'category' => $this->m_categories->get_all_data(),
+                    'settings' => $this->m_settings->get_data(),
                     'error_upload' => $this->upload->display_errors(),
                     'content' => 'admin/products/v_add',
                 );
@@ -104,6 +107,7 @@ class Products extends CI_Controller
         $data = array(
             'title' => 'Add Product',
             'category' => $this->m_categories->get_all_data(),
+            'settings' => $this->m_settings->get_data(),
             'content' => 'admin/products/v_add',
         );
 
@@ -164,6 +168,7 @@ class Products extends CI_Controller
                 $data = array(
                     'title' => 'Update Product',
                     'category' => $this->m_categories->get_all_data(),
+                    'settings' => $this->m_settings->get_data(),
                     'product' => $this->m_products->get_data($id_product),
                     'error_upload' => $this->upload->display_errors(),
                     'content' => 'admin/products/v_update',
@@ -197,6 +202,7 @@ class Products extends CI_Controller
         $data = array(
             'title' => 'Update Product',
             'category' => $this->m_categories->get_all_data(),
+            'settings' => $this->m_settings->get_data(),
             'product' => $this->m_products->get_data($id_product),
             'content' => 'admin/products/v_update',
         );

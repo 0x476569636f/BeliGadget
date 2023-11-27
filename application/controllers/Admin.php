@@ -14,6 +14,7 @@ class Admin extends CI_Controller
     {
         $data = array(
             'title' => 'Dashboard',
+            'settings' => $this->m_settings->get_data(),
             'content' => 'admin/v_dashboard'
         );
         $this->load->view('admin/layout/wrapper', $data);
