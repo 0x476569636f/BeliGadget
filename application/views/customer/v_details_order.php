@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <h5 class="font-weight-bold"> <i class="fas fa-shopping-cart"></i> DETAIL ORDER</h5>
                     <hr>
-                    <table class="table table-bordered">
+                    <table class="table table-hover table-responsive table-bordered">
                         <tr>
                             <td style="width: 25%">
                                 NO. INVOICE
@@ -107,7 +107,7 @@
                                 <?php } ?>
                             </td>
                         </tr>
-                        <?php if(isset($details[0]->no_resi)) { ?>
+                        <?php if(isset($details[0]->no_resi) && ($details[0]->status == 2 || $details[0]->status == 3)) { ?>
                         <tr>
                             <td>
                                 NO RESI
@@ -138,13 +138,13 @@
                     <h5><i class="fa fa-shopping-cart"></i> DETAIL ORDER</h5>
                     <hr>
                     <?php foreach ($details as $value) { ?>
-                        <table class="table" style="border-style: solid !important;border-color: rgb(198, 206, 214) !important;">
+                        <table class="table table-responsive" style="border-style: solid !important;border-color: rgb(198, 206, 214) !important;">
                             <tbody>
 
                                 <tr style="background: #edf2f7;">
                                     <td class="b-none" width="25%">
                                         <div class="wrapper-image-cart">
-                                            <img src="<?= base_url('assets/products_img/' . $value->image) ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: .5rem;">
+                                            <img src="<?= base_url('assets/products_img/' . $value->image) ?>"  class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; border-radius: .5rem;">
                                         </div>
                                     </td>
                                     <td class="b-none" width="50%">
@@ -153,8 +153,7 @@
                                             <tr>
                                                 <td style="padding: .20rem">QTY</td>
                                                 <td style="padding: .20rem">:</td>
-                                                <td style="padding: .20rem"><b><?= isset($value->qty) ? $value
-                                                                                    ->qty : 'N/A'; ?></b></td>
+                                                <td style="padding: .20rem"><b><?= isset($value->qty) ? $value->qty : 'N/A'; ?></b></td>
                                             </tr>
                                         </table>
                                     </td>
