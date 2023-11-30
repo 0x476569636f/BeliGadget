@@ -9,12 +9,20 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_settings');
+        $this->load->model('m_getsumorders');
+        $this->load->model('m_getstatsorders');
     }
     public function index()
     {
         $data = array(
             'title' => 'Dashboard',
             'settings' => $this->m_settings->get_data(),
+            'sumorders_m' => $this->m_getsumorders->bulanini(),
+            'sumorders_y' => $this->m_getsumorders->tahunini(),
+            'sumorders'  => $this->m_getsumorders->semua(),
+            'pending' => $this->m_getstatsorders->pending(),
+            'success' => $this->m_getstatsorders->success(),
+            'canceled' => $this->m_getstatsorders->canceled(),
             'content' => 'admin/v_dashboard'
         );
         $this->load->view('admin/layout/wrapper', $data);
