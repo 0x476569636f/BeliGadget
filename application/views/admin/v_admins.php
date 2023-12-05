@@ -47,8 +47,10 @@
                                 <td><?= $value->username; ?></td>
                                 <td><?= $value->password; ?></td>
                                 <td>
+                                   <?php if($value->username  != "admin") { ?>
                                     <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit<?= $value->id_admin ?>"><i class="fas fa-edit"></i></button>
                                     <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete<?= $value->id_admin ?>"><i class="fas fa-trash"></i></button>
+                                    <?php } ?>
                                 </td>
                             </tr>
 
