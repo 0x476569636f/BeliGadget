@@ -9,7 +9,7 @@ class M_admins extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tbl_admin');
-        $this->db->order_by('id_admin', 'desc');
+        $this->db->order_by('id_admin', 'asc');
         return $this->db->get()->result();
     }
     
