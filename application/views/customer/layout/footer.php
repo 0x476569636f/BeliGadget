@@ -86,7 +86,7 @@
         <div class="row text-center mt-3 pb-3">
             <div class="col-md-12">
                 <hr>
-                © <strong>BeliGadget</strong> 2023 • 
+                © <strong>BeliGadget</strong> 2024 •
             </div>
         </div>
     </div>
