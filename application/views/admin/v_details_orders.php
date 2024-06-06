@@ -46,7 +46,9 @@
                     </td>
                     <td>:</td>
                     <td>
-                        <?= isset($details[0]->courier) ? strtoupper($details[0]->courier) : 'N/A'; ?> / <?= isset($details[0]->layanan_courier) ? strtoupper($details[0]->layanan_courier) : 'N/A'; ?> / Rp.
+                        <?= isset($details[0]->courier) ? strtoupper($details[0]->courier) : 'N/A'; ?> /
+                        <?= isset($details[0]->layanan_courier) ? strtoupper($details[0]->layanan_courier) : 'N/A'; ?> /
+                        Rp.
                         <?= isset($details[0]->ongkir) ? $details[0]->ongkir : 'N/A'; ?>
                     </td>
                 </tr>
@@ -111,8 +113,12 @@
                     </td>
                     <td>:</td>
                     <td>
-                        <button class="btn btn-sm btn-warning m-1" data-toggle="modal" data-target="#inputresi<?= $details[0]->id_order ?>"><i class="fas fa-edit"></i>Input Resi</button>
-                        <button class="btn btn-sm btn-warning m-1" data-toggle="modal" data-target="#gantistatus<?= $details[0]->id_order ?>"><i class="fas fa-edit"></i>Ubah Status</button>
+                        <button class="btn btn-sm btn-warning m-1" data-toggle="modal" data-target="#inputresi<?= $details[0]->id_order ?>"><i class="fas fa-edit"></i>Input
+                            Resi</button>
+                        <button class="btn btn-sm btn-warning m-1" data-toggle="modal" data-target="#gantistatus<?= $details[0]->id_order ?>"><i class="fas fa-edit"></i>Ubah
+                            Status</button>
+                        <a href="<?= base_url() . 'orders/exportpdf/' . $details[0]->no_order ?>"><button class="btn btn-sm btn-success m-1" <i class="fas fa-edit"></i>Download
+                                Invoices</button></a>
                     </td>
                 </tr>
             </table>
@@ -138,12 +144,14 @@
                                     <tr>
                                         <td style="padding: .20rem">QTY</td>
                                         <td style="padding: .20rem">:</td>
-                                        <td style="padding: .20rem"><b><?= isset($value->qty) ? $value->qty : 'N/A'; ?></b></td>
+                                        <td style="padding: .20rem"><b><?= isset($value->qty) ? $value->qty : 'N/A'; ?></b>
+                                        </td>
                                     </tr>
                                 </table>
                             </td>
                             <td class="b-none text-right">
-                                <p class="m-0 font-weight-bold">Rp. <?= number_format($value->price - ($value->price * $value->discount / 100)) ?></p>
+                                <p class="m-0 font-weight-bold">Rp.
+                                    <?= number_format($value->price - ($value->price * $value->discount / 100)) ?></p>
                             </td>
                         </tr>
                     </tbody>
@@ -207,16 +215,16 @@
                     <div class="form-group">
                         <label>Status</label>
                         <select name="status" class="form-control">
-                            <?php if ($value->status == 0) {?>
-                            <option value="<?= $value->status ?>">Belum Di Bayar</option>
-                            <?php } else if($value->status == 1) { ?>
-                            <option value="<?= $value->status ?>">Sudah Di Bayar</option>
-                            <?php } else if($value->status == 2) { ?>
-                            <option value="<?= $value->status ?>">Sedang Di Kirim</option>
-                            <?php } else if($value->status == 3) { ?>
-                            <option value="<?= $value->status ?>">Diterima</option>
-                            <?php } else if($value->status == 4) { ?>
-                            <option value="<?= $value->status ?>">Dibatalkan</option>
+                            <?php if ($value->status == 0) { ?>
+                                <option value="<?= $value->status ?>">Belum Di Bayar</option>
+                            <?php } else if ($value->status == 1) { ?>
+                                <option value="<?= $value->status ?>">Sudah Di Bayar</option>
+                            <?php } else if ($value->status == 2) { ?>
+                                <option value="<?= $value->status ?>">Sedang Di Kirim</option>
+                            <?php } else if ($value->status == 3) { ?>
+                                <option value="<?= $value->status ?>">Diterima</option>
+                            <?php } else if ($value->status == 4) { ?>
+                                <option value="<?= $value->status ?>">Dibatalkan</option>
                             <?php } ?>
                             <option value="0">Belum Di Bayar</option>
                             <option value="1">Sudah Di Bayar</option>

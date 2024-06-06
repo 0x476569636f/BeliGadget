@@ -1,7 +1,7 @@
 <?php
 
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Orders extends CI_Controller
 {
@@ -46,7 +46,7 @@ class Orders extends CI_Controller
         $this->m_orders->updateresi($data);
         $this->session->set_flashdata('pesan', 'Resi Berhasil Di Update !');
 
-        redirect('orders/details/'.$no_order);
+        redirect('orders/details/' . $no_order);
     }
 
     public function gantistatus($no_order)
@@ -59,7 +59,30 @@ class Orders extends CI_Controller
         $this->m_orders->gantistatus($data);
         $this->session->set_flashdata('pesan', 'Status Berhasil Di Update !');
 
-        redirect('orders/details/'.$no_order);
+        redirect('orders/details/' . $no_order);
+    }
+
+    public function exportpdf($no_order)
+    {
+        $data = array(
+            'title' => 'Pesanan Saya',
+            'details' => $this->m_orders->get_details_order($no_order),
+            'content' => 'customer/v_details_order'
+        );
+        $sroot      = $_SERVER['DOCUMENT_ROOT'];
+        include $sroot . "/beligadget/application/third_party/dompdf/autoload.inc.php";
+        $dompdf = new Dompdf\Dompdf();
+
+        $this->load->view('invoice/invoice-pdf', $data);
+
+        $paper_size  = 'A4'; // ukuran kertas 
+        $orientation = 'landscape'; //tipe format kertas potrait atau landscape 
+        $html = $this->output->get_output();
+        $dompdf->set_paper($paper_size, $orientation);
+        //Convert to PDF 
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->stream("invoice-$no_order.pdf", array('Attachment' => 0));
     }
 }
 
